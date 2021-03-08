@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+</head>
+
+<style>
+    body {
+        background-color: skyblue;
+    }
+
+    .contact {
+        
+        width: 50%;
+        height: 410px;
+        margin-left: 24%;
+        margin-top: 15px;
+        padding-right: 10px;
+        background-color: rgb(6, 35, 49);
+        border-radius: 14px;
+    }
+
+    .input {
+        font-size: 20px;
+        width: 90%;
+        height: 30px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        border-style:hidden;        
+    }
+
+
+    .input-query {
+        font-size: 20px;
+        width: 91%;
+        height: 90px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 10px;
+        border-radius: 10px;
+        border-style:hidden; 
+    }
+
+    
+    .red-border {
+        border-width: 2px;
+        border-color: red;
+        border-style: solid;
+    }
+
+    .submit {
+        background-color: green;
+        margin-top: 30px;
+        margin-left: 15px;
+        font-size: 25px;
+    }
+
+    h2 {
+        font-size: 50px;
+        margin-left: 24%;
+        margin-top: 105px;
+    }
+
+    input[type="text"] ::placeholder {
+        margin-top: 0px;
+    }
+
+    .alert {
+        background-color: rgb(143, 180, 229);
+        text-align: center;
+        font-size: 30px;
+        margin-left: 25%;
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 5px;
+        width: 46%;
+    }
+
+</style>
+
+<body>
+    <h2>Contact Us</h2>
+    <form action = "/result" method="POST">
+    
+    <div class="contact">    
+        <input type="text" class="input red-border" name="Name" required placeholder="your name">
+        <input type="email" class="input red-border" name ="email" required placeholder="your email">
+        <input type="text" class="input red-border" name ="Subject" required placeholder="Subject">
+        <input type="text" class="input-query red-border" name ="message" required placeholder="Enter your query">
+        <input type="submit" class="submit" name="submit">
+        <!-- <button onclick="myFunction()">Click me</button> -->
+    </div>
+    </form>
+    {% for message in get_flashed_messages() %}
+    <div class="alert">
+        {{ message }}
+        <button type="button" class="close" onclick="myFunction()">&times;</button>
+    </div>
+    {% endfor %}
+    <script>
+        function myFunction() {
+            var msg = document.querySelector('.alert');
+            msg.remove();
+        }
+    </script>
+</body>
+</html>
